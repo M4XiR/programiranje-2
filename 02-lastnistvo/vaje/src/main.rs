@@ -162,41 +162,37 @@ fn helper2(s: &mut String) {
 /// ------------------------------------------------------------------------------------------------
 
 /// Pojasnite, zakaj spodnja koda ne deluje
-fn fn8() {
-    let mut s = String::from("hello, ");
-    let p = &mut s;
-    p.push_str("world");
-    println!("Success! {}", p);
-    println!("Success! {}", s);
-    p.push_str("!");
+//fn fn8() {
+//    let mut s = String::from("hello, ");
+//    let p = &mut s;
+//    p.push_str("world");
+//    println!("Success! {}", p); 
+//    println!("Success! {}", s); rust ne dovoli ponovne uporabe sposojene spremenljivke, in dovoli le eno mutabilno referenco
+//    p.push_str("!");
+//}
+
+/// ------------------------------------------------------------------------------------------------
+/// Pojasnite, zakaj spodnja koda ne deluje in jo popravite
+/// Pojasnite tudi zakaj je popravek ok
+
+fn fn9() {
+    let mut s = String::from("hello");
+    {let r1 = &mut s;
+    print!("{}, ",r1)}
+    let r2 = &mut s;
+    println!("{}",  r2);
+    println!("Success!");
 }
 
-////// ------------------------------------------------------------------------------------------------
-////// Pojasnite, zakaj spodnja koda ne deluje in jo popravite
-////// Pojasnite tudi zakaj je popravek ok
-///
-///fn fn9() {
-///    // let mut s = String::from("hello");
-///
-///    // let r1 = &mut s;
-///    // let r2 = &mut s;
-///
-///    // println!("{}, {}", r1, r2);
-///
-///    // println!("Success!");
-///}
-///
-////// ------------------------------------------------------------------------------------------------
-///fn fn10() {
-///    // // Popravite spodnjo vrstico
-///    // let s = String::from("hello, ");
-///
-///    // helper3(&mut s);
-///
-///    // println!("Success!");
-///}
-///
-///fn helper3(s: &mut String) {}
+/// ------------------------------------------------------------------------------------------------
+fn fn10() {
+    // Popravite spodnjo vrstico
+    let mut s = String::from("hello, ");
+    helper3(&mut s);
+    println!("Success!");
+}
+
+fn helper3(_s: &mut String) {}
 
 /// ------------------------------------------------------------------------------------------------
 
@@ -212,4 +208,6 @@ fn main() {
     fn5();
     fn6();
     fn7();
+    fn9();
+    fn10()
 }
