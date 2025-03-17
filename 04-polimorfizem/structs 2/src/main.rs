@@ -1,15 +1,13 @@
-struct ArtimeticnoZaporedje {
-    zacetni_clen: i32, // ar zaporedje lahko podamo s zacetnim clenom in diferenco
-    diferenca: i32,
-    trenutni_clen: i32,
-}
-struct NekoZaporedje {
-    zacetni_clen: i32,
-    diferenca: i32,
+struct ArtimeticnoZaporedje<T> {
+    zacetni_clen: T, // ar zaporedje lahko podamo s zacetnim clenom in diferenco
+    diferenca: T,
+    trenutni_clen: T,
 }
 
-impl ArtimeticnoZaporedje {
-    fn new(zacetni: i32, dif: i32) -> ArtimeticnoZaporedje {
+
+impl<T> ArtimeticnoZaporedje<T> 
+    where   {
+    fn new(zacetni: T, dif: T) -> Self {
         ArtimeticnoZaporedje {
             zacetni_clen: zacetni,
             diferenca: dif,
@@ -49,60 +47,44 @@ impl ArtimeticnoZaporedje {
     fn produkt(a: &ArtimeticnoZaporedje, b: &ArtimeticnoZaporedje) -> NekoZaporedje {
         NekoZaporedje {
             zacetni_clen: a.zacetni_clen * b.zacetni_clen,
-            diferenca: a.diferenca * b.diferenca,
+            diferenca: a.zacetni_clen * b.diferenca
+                + b.zacetni_clen * a.diferenca
+                + a.diferenca * b.diferenca,
         }
     }
 }
 
-struct GeometrijskoZaporedje {
-    zacetni_clen: i32, // ar zaporedje lahko podamo s zacetnim clenom in diferenco
-    kvocient: i32,
-    trenutni_clen: i32,
-}
-struct Pomozno {
-    zacetni_clen: i32,
-    diferenca: i32,
-}
 
-impl GeometrijskoZaporedje {
-    fn new(zacetni: i32, dif: i32) -> GeometrijskoZaporedje {
-        GeometrijskoZaporedje {
-            zacetni_clen: zacetni,
-            kvocient: dif,
-            trenutni_clen: zacetni,
-        }
-    }
-    fn next(&mut self) -> i32 {
-        let clen = self.trenutni_clen;
-        self.trenutni_clen *= self.kvocient;
-        clen
-    }
-    fn n_th(&mut self, n: u32) -> i32 {
-        self.zacetni_clen * i32::pow(self.kvocient, n - 1)
-    }
-    fn reset(&mut self) {
-        self.trenutni_clen = self.zacetni_clen;
-    }
-    fn current(&self) -> i32 {
-        self.trenutni_clen
-    }
-    fn sum(&self, n: i32) -> i32 {
-        let mut vsota = 0;
-        let mut pomozna = self.zacetni_clen;
-        for _ in 0..n {
-            vsota += pomozna;
-            pomozna *= self.kvocient;
-        }
-        vsota
-    }
-    fn produkt(a: &GeometrijskoZaporedje, b: &GeometrijskoZaporedje) -> GeometrijskoZaporedje {
-        GeometrijskoZaporedje {
-            zacetni_clen: a.zacetni_clen * b.zacetni_clen,
-            kvocient: a.kvocient * b.kvocient,
-            trenutni_clen: a.zacetni_clen * b.zacetni_clen,
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 enum BinOperacija {
     Plus,
