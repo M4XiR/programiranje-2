@@ -159,8 +159,8 @@ fn main() {
         )),
     );
 
-    println!("{}", racun1.izpis());
-    println!("{}", racun2.izpis());
-    println!("{}", racun3.izpis());
+    println!("{}", racun1.eval());
+    println!("{}", racun2.eval());
+    println!("{}", racun3.eval());
 
 }
