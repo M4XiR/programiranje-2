@@ -1,11 +1,10 @@
 // Napišite različne funkcije, ki kot argument sprejmejo zaprtje (closure) in ga pokličejo z različnimi argumenti, ki ustrezajo sledečim ocaml tipom:
 // Tip zaprtja naj bo čim bolj splošen (Fn, FnOnce, FnMut).
-//  (int -> int) -> int -> int
-//  ('a -> 'b) -> 'a -> 'b
-//  ('a -> 'a -> 'b) -> 'a -> 'a -> 'b
+//  apply_int: (int -> int) -> int -> int
+//  apply: ('a -> 'b) -> 'a -> 'b
+//  apply2: ('a -> 'a -> 'b) -> 'a -> 'a -> 'b
 //  map: ('a -> 'b) -> 'a list -> 'b list  (Uporabite Vec<T> namesto list, predpostavite, da funkcija ne spremeni elementov seznama)
-//  map_and_mutate: ('a -> 'b) -> 'a list -> 'b list // Definirajte funkcijo tako, da lahko zaprtje spremeni elemente seznama
-//  ponavljaj: int -> ('a -> 'a) -> 'a -> 'a // Ponovi zaprtje n-krat
+//  ponavljaj: int -> ('a -> 'a) -> 'a -> 'a // Ponovi funkcijo n-krat
 //  filter: ('a -> bool) -> 'a list -> 'a list // Vrne seznam elementov, ki zadoščajo pogoju - uporabite Vec<T> namesto list in že vgrajeno funkcijo filter
 
 // Vzemite zaporedja iz prejšnjih vaj in naredite nov objekt, ki sprejme zaporedje in ga naredi iterabilnega
@@ -23,11 +22,13 @@
 // vektor Option<T> in vrne število Some-ov
 // odfiltrira števila deljena s 3
 
+// Popravite zaporedja iz prejšnjih vaj, da bodo `iterabilna`
+
 // Dopolnite spodnjo funkcijo, da vrne niz, kjer so vse prve črke posameznih besed velike
 // ["Just,", " ", "hello", " ", "world", "!"] -> "Just, Hello World", "!"
-pub fn capitalize_words_string(words: &[&str]) -> String {
-    panic!("Not implemented");
-}
+// pub fn capitalize_words_string(words: &[&str]) -> String {
+//     panic!("Not implemented");
+// }
 // Napišite funkcijo `fakulteta`, ki izračuna fakulteto števila n. Uporabite iteratorje (torej brez lastne for zanke, rekurzije)
 // Namig: fold, reduce, `..`...
 
