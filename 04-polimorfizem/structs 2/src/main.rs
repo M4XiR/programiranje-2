@@ -74,7 +74,18 @@ impl<T: PartialEq> PartialEq for ArtimeticnoZaporedje<T> {
         self.zacetni_clen == other.zacetni_clen && self.diferenca == other.diferenca
     }
 }
-use std::fmt;
+
+trait Zaporedje<T> {
+    fn name(&self) -> &str;
+    fn start(&self) -> T;
+    fn k_th(&self, k: usize) -> T;
+    fn contains(&self, x: &T) -> bool;
+}
+
+
+
+
+use std::{fmt, usize};
 #[derive(Debug, Clone)]
 enum BinOperacija {
     Plus,
@@ -111,7 +122,6 @@ where
             Izraz::Operacija(k1, _, k2) => k1.collect() + k2.collect(),
         }
     }
-    
 }
 
 impl<T: fmt::Display> fmt::Display for Izraz<T> {
@@ -162,5 +172,4 @@ fn main() {
     println!("{}", racun1.eval());
     println!("{}", racun2.eval());
     println!("{}", racun3.eval());
-
 }

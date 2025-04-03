@@ -21,7 +21,7 @@
 // vektor Option<T> in izpiše vse T-je
 // vektor Option<T> in vrne število Some-ov
 // odfiltrira števila deljena s 3
-
+ok
 // Popravite zaporedja iz prejšnjih vaj, da bodo `iterabilna`
 
 // Dopolnite spodnjo funkcijo, da vrne niz, kjer so vse prve črke posameznih besed velike
